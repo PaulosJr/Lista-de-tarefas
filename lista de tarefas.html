@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lista de tarefas.css">
+    <script src="tarefas.js"></script>
+    <h1>Lista de Tarefas</h1>
+
+    <header>
+      <input id="inputTarefa" type="text" placeholder="Digite Sua Tarefa">
+      <button onclick="addTarefa()" id="btn-add" class="add">Adicionar</button>
+    </header>
+      <main id="areaLista">
+
+       </main>
+
+        
+       <script>
+        // Vamos supor que você tenha uma função addTarefa que adicione tarefas à lista.
+        function addTarefa() {
+          const contador = 'algum_valor'; // Defina o valor de contador
+          const valorInput = document.getElementById('inputTarefa').value;
+      
+          // Crie elementos HTML e adicione-os à lista
+          const div = document.createElement('div');
+          div.id = contador;
+          div.className = 'item';
+      
+          const itemIcone = document.createElement('div');
+          itemIcone.className = 'item-icone';
+          itemIcone.onclick = function() {
+            marcarTarefa(contador);
+          };
+          const icone = document.createElement('i');
+          icone.id = `icone_${contador}`;
+          icone.className = 'mdi mdi-circle-outline';
+          itemIcone.appendChild(icone);
+      
+          const itemNome = document.createElement('div');
+          itemNome.className = 'item-nome';
+          itemNome.textContent = valorInput;
+      
+          const itemBotao = document.createElement('div');
+          itemBotao.className = 'item-botao';
+          const deleteButton = document.createElement('button');
+          deleteButton.onclick = function() {
+            deletar(contador);
+          };
+          deleteButton.className = 'delete';
+          const deleteIcon = document.createElement('i');
+          deleteIcon.className = 'mdi mdi-delete';
+          deleteButton.appendChild(deleteIcon);
+          deleteButton.textContent = 'Deletar';
+          itemBotao.appendChild(deleteButton);
+      
+          div.appendChild(itemIcone);
+          div.appendChild(itemNome);
+          div.appendChild(itemBotao);
+      
+          document.getElementById('areaLista').appendChild(div);
+        }
+      
+        // Defina as funções marcarTarefa e deletar conforme necessário
+      </script>
+</body>
+</html>
